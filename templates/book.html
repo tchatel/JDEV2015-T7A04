@@ -4,7 +4,7 @@
 <div class="info">
     <div class="title">{{book.title}}</div>
     <div>de <span class="author">{{book.author}}</span></div>
-    <div class="price">{{book.price |currency}}</div>
+    <div class="price">{{book.price |currency}} <button ng-click="buy(book)">Acheter</button></div>
 </div>
 <div class="rating">
     Note : <span class="rating" rating="book.rating"></span> <em>sur <strong>{{book.votes}}</strong>

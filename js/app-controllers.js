@@ -24,7 +24,7 @@ angular.module('app-controllers', [])
         pageInfo.title = "Catalogue des livres";
     })
 
-    .controller('BookController', function ($scope, $http, $routeParams, pageInfo) {
+    .controller('BookController', function ($scope, $http, $routeParams, pageInfo, cart, $location) {
         var id = $routeParams.id,
             url = 'data/' + id + '.json';
         $http.get(url)
@@ -35,7 +35,15 @@ angular.module('app-controllers', [])
             .error(function(data, status, headers, config) {
                 console.log("HTTP Error: ", data, status, headers, config);
             });
+        $scope.buy = function (book) {
+            cart.add(book);
+            $location.url('/cart');
+        };
+    })
 
+    .controller('CartController', function ($scope, pageInfo, cart) {
+        pageInfo.title = "Panier";
+        $scope.cart = cart;
     })
 
 ;

@@ -1,0 +1,29 @@
+<h2>Votre panier</h2>
+
+<div ng-show="cart.empty()">Le panier est vide.</div>
+
+<table id="cart" ng-hide="cart.empty()">
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="row in cart.rows">
+        <td class="image">
+            <a ng-href="#/book/{{row.book.isbn10}}"><img ng-src="data/img/{{row.book.isbn10}}.jpg"/></a>
+        </td>
+        <td class="info">
+            <div class="title"><a ng-href="#/book/{{row.book.isbn10}}">{{row.book.title}}</a></div>
+            <div>de <span class="author">{{row.book.author}}</span></div>
+        </td>
+        <td class="price">{{row.book.price |currency}}</td>
+        <td class="quantity"><input type="number" ng-model="row.quantity"/></td>
+        <td class="suppr"><button ng-click="cart.remove(row)">Supprimer</button></td>
+    </tr>
+    <tr>
+        <td class="total" colspan="5"><strong>TOTAL : {{cart.total() | currency}}</strong></td>
+    </tr>
+</table>
+

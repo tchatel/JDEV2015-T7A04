@@ -21,6 +21,11 @@ angular.module('app', [
             controller: 'BookController'
         });
 
+        $routeProvider.when('/cart', {
+            templateUrl: 'templates/cart.html',
+            controller: 'CartController'
+        });
+
         $routeProvider.otherwise({
             redirectTo: '/catalog'
         });
