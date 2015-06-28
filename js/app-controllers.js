@@ -2,7 +2,13 @@
 
 angular.module('app-controllers', [])
 
-    .controller('CatalogController', function ($scope, $http) {
+    .controller('HeadController', function ($scope, pageInfo) {
+        $scope.getPageTitle = function () {
+            return pageInfo.title;
+        };
+    })
+
+    .controller('CatalogController', function ($scope, $http, pageInfo) {
         $http.get('/data/catalog.json')
             .success(function(data, status, headers, config) {
                 $scope.books = data;
@@ -10,15 +16,16 @@ angular.module('app-controllers', [])
             .error(function(data, status, headers, config) {
                 console.log("HTTP Error: ", data, status, headers, config);
             });
-
+        pageInfo.title = "Catalogue des livres";
     })
 
-    .controller('BookController', function ($scope, $http, $routeParams) {
+    .controller('BookController', function ($scope, $http, $routeParams, pageInfo) {
         var id = $routeParams.id,
             url = 'data/' + id + '.json';
         $http.get(url)
             .success(function(data, status, headers, config) {
                 $scope.book = data;
+                pageInfo.title = "Livre:" + $scope.book.title;
             })
             .error(function(data, status, headers, config) {
                 console.log("HTTP Error: ", data, status, headers, config);
