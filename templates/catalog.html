@@ -1,20 +1,22 @@
 <h2>Catalogue des livres</h2>
 
 <table id="catalog">
-    <tr>
+    <tr ng-repeat="book in books">
         <td class="image">
             <img src="data/img/xxxxxxxxxx.jpg"/>
         </td>
         <td class="info">
-            <div class="title">Titre du livre</div>
-            <div>de <span class="author">Auteur du livre</span></div>
-            <div>10 €</div>
+            <div class="title">{{book.title}}</div>
+            <div>de <span class="author">{{book.author}}</span></div>
+            <div class="price">{{book.price |currency}}</div>
         </td>
         <td class="rating">
-            Note : <span class="rating">4</span><br/>
-            <em>sur <strong>37</strong> votes</em>
+            Note : <span class="rating">{{book.rating}}</span><br/>
+            <em>sur <strong>{{book.votes}}</strong>
+                <span ng-hide="book.votes > 1">vote</span>
+                <span ng-show="book.votes > 1">votes</span>
+            </em>
         </td>
     </tr>
 </table>
 
-{{books}}
