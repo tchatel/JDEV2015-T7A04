@@ -1,7 +1,11 @@
 <h2>Catalogue des livres</h2>
 
+<form>
+    <p>Recherche : <input ng-model="searchText"/></p>
+</form>
+
 <table id="catalog">
-    <tr ng-repeat="book in books">
+    <tr ng-repeat="book in books | filter:searchText">
         <td class="image">
             <img ng-src="data/img/{{book.isbn10}}.jpg"/>
         </td>
