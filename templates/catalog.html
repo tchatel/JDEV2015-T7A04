@@ -1,10 +1,16 @@
 <h2>Catalogue des livres</h2>
 
-<form>
-    <p>Recherche : <input ng-model="searchText"/></p>
+<form name="form">
     <p>
-        Prix minimum : <input type="number" ng-model="minPrice"/><br/>
-        Prix maximun : <input type="number" ng-model="maxPrice"/>
+        Recherche : <input ng-model="searchText" name="searchText" ng-minlength="3"/>
+        <span class="error" ng-show="form.searchText.$error.minlength">Trop court !</span>
+    </p>
+    <p>
+        Prix minimum : <input type="number" ng-model="minPrice" name="minPrice"/>
+        <span class="error" ng-show="form.minPrice.$error.number">Saisissez un nombre</span>
+        <br/>
+        Prix maximun : <input type="number" ng-model="maxPrice" name="maxPrice"/>
+        <span class="error" ng-show="form.maxPrice.$error.number">Saisissez un nombre</span>
     </p>
 </form>
 

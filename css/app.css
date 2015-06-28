@@ -147,3 +147,8 @@ td {
 .error {
     color: #551111;
 }
+
+input.ng-invalid {
+    border: 2px solid red;
+    background-color: #FFDDDD;
+}
