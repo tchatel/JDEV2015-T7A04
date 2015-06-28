@@ -17,10 +17,10 @@
 <table id="catalog">
     <tr ng-repeat="book in books | filter:searchText | range:'price':minPrice:maxPrice">
         <td class="image">
-            <img ng-src="data/img/{{book.isbn10}}.jpg"/>
+            <a ng-href="#/book/{{book.isbn10}}"><img ng-src="data/img/{{book.isbn10}}.jpg"/></a>
         </td>
         <td class="info">
-            <div class="title">{{book.title}}</div>
+            <div class="title"><a ng-href="#/book/{{book.isbn10}}">{{book.title}}</a></div>
             <div>de <span class="author">{{book.author}}</span></div>
             <div class="price">{{book.price |currency}}</div>
         </td>
