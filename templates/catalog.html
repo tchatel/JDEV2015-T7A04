@@ -12,10 +12,13 @@
         Prix maximun : <input type="number" ng-model="maxPrice" name="maxPrice"/>
         <span class="error" ng-show="form.maxPrice.$error.number">Saisissez un nombre</span>
     </p>
+    <p>
+        <select ng-model="sort" ng-options="opt.label for opt in sortOptions"></select>
+    </p>
 </form>
 
 <table id="catalog">
-    <tr ng-repeat="book in books | filter:searchText | range:'price':minPrice:maxPrice">
+    <tr ng-repeat="book in books | filter:searchText | range:'price':minPrice:maxPrice | orderBy:sort.expression:sort.reverse">
         <td class="image">
             <a ng-href="#/book/{{book.isbn10}}"><img ng-src="data/img/{{book.isbn10}}.jpg"/></a>
         </td>

@@ -8,7 +8,10 @@ angular.module('app-controllers', [])
         };
     })
 
-    .controller('CatalogController', function ($scope, $http, pageInfo) {
+    .controller('CatalogController', function ($scope, $http, pageInfo, sortOptions) {
+        $scope.sortOptions = sortOptions;
+        $scope.sort = sortOptions[0];
+
         $http.get('/data/catalog.json')
             .success(function(data, status, headers, config) {
                 $scope.books = data;
