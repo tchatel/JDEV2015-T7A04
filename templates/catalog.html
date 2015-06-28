@@ -2,10 +2,14 @@
 
 <form>
     <p>Recherche : <input ng-model="searchText"/></p>
+    <p>
+        Prix minimum : <input type="number" ng-model="minPrice"/><br/>
+        Prix maximun : <input type="number" ng-model="maxPrice"/>
+    </p>
 </form>
 
 <table id="catalog">
-    <tr ng-repeat="book in books | filter:searchText">
+    <tr ng-repeat="book in books | filter:searchText | range:'price':minPrice:maxPrice">
         <td class="image">
             <img ng-src="data/img/{{book.isbn10}}.jpg"/>
         </td>
