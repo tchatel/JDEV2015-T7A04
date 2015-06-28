@@ -25,7 +25,7 @@
             <div class="price">{{book.price |currency}}</div>
         </td>
         <td class="rating">
-            Note : <span class="rating">{{book.rating}}</span><br/>
+            Note : <span class="rating" rating="book.rating"></span><br/>
             <em>sur <strong>{{book.votes}}</strong>
                 <span ng-hide="book.votes > 1">vote</span>
                 <span ng-show="book.votes > 1">votes</span>

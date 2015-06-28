@@ -7,7 +7,7 @@
     <div class="price">{{book.price |currency}}</div>
 </div>
 <div class="rating">
-    Note : <span class="rating">{{book.rating}}</span> <em>sur <strong>{{book.votes}}</strong>
+    Note : <span class="rating" rating="book.rating"></span> <em>sur <strong>{{book.votes}}</strong>
         <span ng-hide="book.votes > 1">vote</span>
         <span ng-show="book.votes > 1">votes</span>
     </em>
