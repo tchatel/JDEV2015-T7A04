@@ -2,23 +2,25 @@
 
 <form name="form">
     <p>
-        Recherche : <input ng-model="searchText" name="searchText" ng-minlength="3"/>
+        Recherche : <input ng-model="state.searchText" name="searchText" ng-minlength="3"/>
         <span class="error" ng-show="form.searchText.$error.minlength">Trop court !</span>
     </p>
     <p>
-        Prix minimum : <input type="number" ng-model="minPrice" name="minPrice"/>
+        Prix minimum : <input type="number" ng-model="state.minPrice" name="minPrice"/>
         <span class="error" ng-show="form.minPrice.$error.number">Saisissez un nombre</span>
         <br/>
-        Prix maximun : <input type="number" ng-model="maxPrice" name="maxPrice"/>
+        Prix maximun : <input type="number" ng-model="state.maxPrice" name="maxPrice"/>
         <span class="error" ng-show="form.maxPrice.$error.number">Saisissez un nombre</span>
     </p>
     <p>
-        <select ng-model="sort" ng-options="opt.label for opt in sortOptions"></select>
+        <select ng-model="state.sort" ng-options="opt.label for opt in sortOptions"></select>
     </p>
 </form>
 
 <table id="catalog">
-    <tr ng-repeat="book in books | filter:searchText | range:'price':minPrice:maxPrice | orderBy:sort.expression:sort.reverse">
+    <tr ng-repeat="book in books | filter:state.searchText
+                                 | range:'price':state.minPrice:state.maxPrice
+                                 | orderBy:state.sort.expression:state.sort.reverse">
         <td class="image">
             <a ng-href="#/book/{{book.isbn10}}"><img ng-src="data/img/{{book.isbn10}}.jpg"/></a>
         </td>

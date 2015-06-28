@@ -13,4 +13,11 @@ angular.module('app-services', [])
         {expression: 'rating', reverse: true, label: "Note décroissante"}
     ])
 
+    .factory('state', function () {
+        var cache = {};
+        return function (viewId, initialValue) {
+            return cache[viewId] || (cache[viewId] = initialValue);
+        };
+    })
+
 ;
