@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="css/app.css"/>
+
+    <script src="http://localhost:9999/angular.js"></script>
+    <script src="http://localhost:9999/i18n/angular-locale_fr-fr.js"></script>
+    <script src="http://localhost:9999/angular-route.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/app-controllers.js"></script>
+    <script src="js/app-services.js"></script>
+    <script src="js/app-filters.js"></script>
+    <script src="js/app-directives.js"></script>
+
+</head>
+
+<body>
+
+    <div id="header">
+        <div id="menu">
+            <a ng-href="#/catalog">Catalogue</a> |
+            Panier
+        </div>
+        <h1>Bookstore</h1>
+    </div>
+
+    <ng-view></ng-view>
+
+</body>
+</html>
